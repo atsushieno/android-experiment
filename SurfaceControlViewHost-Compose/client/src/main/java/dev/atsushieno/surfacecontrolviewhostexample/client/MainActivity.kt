@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        surfaceView = SurfaceView(this)
+        surfaceView = SurfaceView(this).apply { setZOrderOnTop(true) }
 
         setContent {
             ClientTheme {
@@ -72,11 +72,8 @@ class MainActivity : ComponentActivity() {
     private val viewModel: MainActivityViewModel by viewModels()
     private lateinit var surfaceView: SurfaceView
 
-    val pluginViewServiceAction = "dev.atsushieno.surfacecontrolviewhostexample.viewcontrol.v1"
     val pluginViewServicePackageName = "dev.atsushieno.surfacecontrolviewhostexample.service"
     val pluginViewServiceClassName = "dev.atsushieno.surfacecontrolviewhostexample.service.PluginViewService"
-
-    var bindingInProcess = false
 
     private fun launchPluginServiceUI(context: Context) {
         surfaceView.apply {
@@ -87,10 +84,6 @@ class MainActivity : ComponentActivity() {
 
         viewModel.viewModelScope.launch {
             val conn = suspendCoroutine { continuation ->
-                if (bindingInProcess)
-                    return@suspendCoroutine
-                bindingInProcess = true
-
                 context.bindService(
                     Intent().setClassName(pluginViewServicePackageName, pluginViewServiceClassName),
                     PluginViewHostConnection {
