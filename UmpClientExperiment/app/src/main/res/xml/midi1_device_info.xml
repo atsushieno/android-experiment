@@ -1,0 +1,6 @@
+<devices>
+    <device name="Midi1TestDevice" manufacturer="atsushieno" product="[Midi1TestDevice]">
+        <input-port name="input" />
+        <output-port name="output" />
+    </device>
+</devices>
