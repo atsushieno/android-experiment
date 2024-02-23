@@ -20,6 +20,6 @@ class UmpDeviceService : MidiUmpDeviceService() {
 
 class UmpReceiver : MidiReceiver() {
     override fun onSend(bytes: ByteArray, offset: Int, length: Int, timestamp: Long) {
-        Log.i("!!!!", "UMP Received: " + bytes.joinToString(",") { it.toString(16) })
+        Log.i("!!!!", "UMP Received [timestamp:$timestamp]: " + bytes.drop(offset).take(length).joinToString(",") { it.toUByte().toString(16) })
     }
 }
