@@ -1,5 +1,5 @@
 <devices>
-    <device name="UmpTestDevice" manufacturer="atsushieno" product="UmpTestDevice">
+    <device name="UmpExperiment" manufacturer="atsushieno" product="UmpTestDevice">
         <port name="port1" />
     </device>
 </devices>

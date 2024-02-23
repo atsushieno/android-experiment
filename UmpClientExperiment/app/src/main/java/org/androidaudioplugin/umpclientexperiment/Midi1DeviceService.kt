@@ -11,7 +11,7 @@ class Midi1DeviceService : MidiDeviceService() {
         arrayOf(receiver)
 
     init {
-        Log.d("!!!!", "initialized Midi1DeviceService")
+        Log.i("!!!!", "initialized Midi1DeviceService")
     }
 }
 

@@ -14,12 +14,12 @@ class UmpDeviceService : MidiUmpDeviceService() {
         mutableListOf(receiver)
 
     init {
-        Log.d("!!!!", "initialized UmpDeviceService")
+        Log.i("!!!!", "initialized UmpDeviceService")
     }
 }
 
 class UmpReceiver : MidiReceiver() {
-    override fun onSend(p0: ByteArray?, p1: Int, p2: Int, p3: Long) {
-        TODO("Not yet implemented")
+    override fun onSend(bytes: ByteArray, offset: Int, length: Int, timestamp: Long) {
+        Log.i("!!!!", "UMP Received: " + bytes.joinToString(",") { it.toString(16) })
     }
 }
